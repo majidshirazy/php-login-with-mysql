@@ -11,7 +11,6 @@
 		<div class="login">
 			<h1>Register</h1>
 			<form action="authenticate.php" method="post">
-                <input type="hidden" name="registerform" value=""/>
 				<label for="username">
 					<i class="fas fa-user"></i>
 				</label>
@@ -20,7 +19,7 @@
 					<i class="fas fa-lock"></i>
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Register">
+				<input type="submit" value="Register" name="registerform">
 			</form>
 		</div>
 	</body>
