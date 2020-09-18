@@ -3,7 +3,7 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
+	header('Location: index.php');
 	exit;
 }
 ?>
@@ -25,10 +25,7 @@ if (!isset($_SESSION['loggedin'])) {
 		</nav>
 		<div class="content">
 			<h2>Home Page</h2>
-			<p>		سحررررررر جووووووون!
-		میشه لطفا زودتر یاد بگیری من رو کامل‌ترم کنی؟
-		کن لق امیر، خودت برای خودت یاد بگیر عشق من
-		</p>
+			<p>You are loged in!</p>
 		</div>
 	</body>
 </html>
