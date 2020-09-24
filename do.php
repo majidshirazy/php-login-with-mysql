@@ -53,13 +53,13 @@ function register($posteduser,$postedpass,$postedemail){
 
 function login($posteduser) {
     global $db;
-    if ($query = $db->prepare('SELECT `id`,`password` FROM `user` WHERE `username` = ?')) {
+    if ($query = $db->prepare('SELECT `id`,`password`,`role` FROM `user` WHERE `username` = ?')) {
         $query->bind_param('s', $posteduser);
         $query->execute();
         $query->store_result();
 
     if ($query->num_rows > 0) {
-        $query->bind_result($id, $password);
+        $query->bind_result($id, $password,$role);
         $query->fetch();
         echo "id is: ".$id." And the password is: ".$password;
         if ($_POST['password'] === $password) {
@@ -68,7 +68,11 @@ function login($posteduser) {
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
             $_SESSION["ses_time"] = time();
-            header('Location: home.php');
+            if ($role === "admin"){
+                header('Location: admin.php');
+            } else {
+                header('Location: home.php');
+            }
         } else {
             echo 'Incorrect username and/or password!';
         }
@@ -97,9 +101,10 @@ function insert($product,$price){
     $author = $_SESSION['name'];
     $sql = "INSERT INTO products (`name`, `price`,`author`) VALUES ('$product','$price','$author')";
     if ($db->query($sql) === TRUE) {
-        header ('location: insert.php');
+        sleep(5);
         echo "product is insert by $author";
-        #session_regenerate_id();
+        header ('location: home.php');
+        echo "OK";
       } else {
         echo "Error: " . $sql . "<br>" . $db->error;
       }
