@@ -18,7 +18,7 @@ else
 	<body>
 		<div class="login">
 			<h1>Login</h1>
-			<form action="authenticate.php" method="post">
+			<form action="do.php" method="post">
                 <input type="hidden" name="loginform" value=""/>
 				<label for="username">
 					<i class="fas fa-user"></i>
@@ -29,6 +29,7 @@ else
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" required>
 				<input type="submit" value="Login">
+				<a href="register.php">Register</a>
 			</form>
 		</div>
 	</body>
