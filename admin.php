@@ -31,7 +31,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 require_once "config.php";
 
-$sql = 'SELECT `username`,`password`,`email` FROM `user` WHERE `role`="user"';
+$sql = 'SELECT `username`,`password`,`email` FROM `user` WHERE `role`="user" ORDER BY `id`';
 $result = $db->query($sql);
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
